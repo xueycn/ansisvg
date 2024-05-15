@@ -3,6 +3,7 @@ package ansitosvg
 
 import (
 	"io"
+	"unicode"
 
 	"github.com/wader/ansisvg/ansidecoder"
 	"github.com/wader/ansisvg/colorscheme/schemes"
