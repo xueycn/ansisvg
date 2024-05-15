@@ -24,7 +24,7 @@ type Options struct {
 }
 
 var DefaultOptions = Options{
-	FontName:    "Courier",
+	FontName:    "Noto Sans Mono, Noto Sans Mono HK",
 	FontSize:    14,
 	CharBoxSize: xydim.XyDimInt{X: 0, Y: 0},
 	MarginSize:  xydim.XyDimFloat{X: 0, Y: 0},
