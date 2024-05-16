@@ -3,7 +3,6 @@ package ansitosvg
 
 import (
 	"io"
-	"unicode"
 
 	"github.com/wader/ansisvg/ansidecoder"
 	"github.com/wader/ansisvg/colorscheme/schemes"
@@ -25,16 +24,12 @@ type Options struct {
 }
 
 var DefaultOptions = Options{
-	FontName:    "Noto Sans Mono, Noto Sans Mono CJK SC",
+	FontName:    "SimHei, Consolas, Menlo, DejaVu Sans Mono, Courier New, Noto Sans Mono CJK SC",
 	FontSize:    14,
 	CharBoxSize: xydim.XyDimInt{X: 0, Y: 0},
 	MarginSize:  xydim.XyDimFloat{X: 0, Y: 0},
 	ColorScheme: "Builtin Dark",
 	Transparent: false,
-}
-
-func isChinese(char rune) bool {
-    return unicode.Is(unicode.Han, char)
 }
 
 // Convert reads ANSI input from r and writes SVG to w
@@ -72,21 +67,17 @@ func Convert(r io.Reader, w io.Writer, opts Options) error {
 		}
 
 		for i := 0; i < n; i++ {
-		    width := 1 // Default width for non-Chinese characters
- 		   if isChinese(r) {
- 		       width = 2 // Adjust width for Chinese characters
- 		   }
-  		  line.Chars = append(line.Chars, svgscreen.Char{
-  		      Char:          string([]rune{r}),
-  		      X:             ad.X + i*width,
-  		      Foreground:    ad.Foreground.String(),
-   		     Background:    ad.Background.String(),
-   		     Underline:     ad.Underline,
-   		     Intensity:     ad.Intensity,
-   		     Invert:        ad.Invert,
-   		     Italic:        ad.Italic,
-    		    Strikethrough: ad.Strikethrough,
- 		   })
+			line.Chars = append(line.Chars, svgscreen.Char{
+				Char:          string([]rune{r}),
+				X:             ad.X + i,
+				Foreground:    ad.Foreground.String(),
+				Background:    ad.Background.String(),
+				Underline:     ad.Underline,
+				Intensity:     ad.Intensity,
+				Invert:        ad.Invert,
+				Italic:        ad.Italic,
+				Strikethrough: ad.Strikethrough,
+			})
 		}
 	}
 	if len(line.Chars) > 0 {
