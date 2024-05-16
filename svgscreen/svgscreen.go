@@ -10,6 +10,7 @@ import (
 	"io"
 	"strconv"
 	"strings"
+	"golang.org/x/text/width"
 )
 
 //go:embed template.svg
@@ -196,7 +197,7 @@ func (s *Screen) lineToTextElement(l Line) textElement {
 			currentSpan = newSpan
 			continue
 		}
-		// Don't consolidate if class is changing, but ignore whitespace
+		// Do not consolidate if class is changing, but ignore whitespace
 		if newSpan.Class != currentSpan.Class && strings.TrimSpace(newSpan.Content) != "" {
 			appendSpan()
 			currentSpan = newSpan
@@ -259,22 +260,37 @@ func (s *Screen) setupBgRects() {
 				Color:  currentRect.color,
 			})
 		}
+		wchar := 0 // 定义一个计数器，用于计算全角字符的数量
 		for x, c := range l.Chars {
+			charlen := 1 // 默认字符长度为1
+			if isWideChar([]rune(c.Char)[0]) {
+				charlen = 2 // 如果是全角字符，则长度为2
+				wchar += 1 // 如果是全角字符，增加计数器
+			}
+
 			if c.Background == "" || c.Background == s.Background.Default {
 				continue
 			}
-			newRect := tmpRect{x: x, w: 1, color: s.resolveColor(c.Background, &s.Background)}
 
-			if newRect.x != (currentRect.x+currentRect.w) || newRect.color != currentRect.color {
+			newRect := tmpRect{x: x + wchar + 1 - charlen, w: charlen, color: s.resolveColor(c.Background, &s.Background)}
+
+			if newRect.x != (currentRect.x + currentRect.w) || newRect.color != currentRect.color {
 				appendRect()
 				currentRect = newRect
 				continue
 			}
 
-			currentRect.w += 1
+			currentRect.w += charlen // 更新当前矩形的宽度
+
 		}
 		appendRect()
 	}
+}
+
+// 判断字符是否占用两个字符宽度，包括所有全角字符
+func isWideChar(r rune) bool {
+	eaWidth := width.LookupRune(r).Kind()
+	return eaWidth == width.EastAsianWide || eaWidth == width.EastAsianFullwidth
 }
 
 func setupCustomColors(revLookup map[string]int, clsTable *[]string) {
