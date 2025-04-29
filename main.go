@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/wader/ansisvg/cli"
+	"github.com/xueycn/ansisvg/cli"
 )
 
 // set by release build
