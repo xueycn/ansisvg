@@ -9,6 +9,19 @@ on:
 permissions:
   contents: write  # 确保有写入权限
 
+builds:
+  - goos:        # 指定操作系统
+      - linux
+      - darwin
+      - windows
+    goarch:      # 仅保留 amd64
+      - amd64
+    ignore:      # 忽略其他架构
+      - goos: linux
+        goarch: arm64
+      - goos: darwin
+        goarch: arm64
+
 jobs:
   release:
     runs-on: ubuntu-latest
