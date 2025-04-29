@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/xueycn/ansisvg/cli"
+	"github.com/xueycn/ansisvg/cli.go"
 )
 
 // set by release build
