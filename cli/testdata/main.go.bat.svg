@@ -31,7 +31,7 @@
 <text x="0ch" y="5.5em"><tspan>        </tspan><tspan class="fc3">&#34;os&#34;</tspan></text>
 <text x="0ch" y="6.5em"><tspan>        </tspan><tspan class="fc3">&#34;strconv&#34;</tspan></text>
 <text x="0ch" y="7.5em"><tspan>        </tspan><tspan class="fc3">&#34;strings&#34;</tspan></text>
-<text x="0ch" y="9.5em"><tspan>        </tspan><tspan class="fc3">&#34;github.com/wader/ansisvg/ansitosvg&#34;</tspan></text>
+<text x="0ch" y="9.5em"><tspan>        </tspan><tspan class="fc3">&#34;github.com/xueycn/ansisvg/ansitosvg&#34;</tspan></text>
 <text x="0ch" y="10.5em"><tspan class="fc1">)</tspan></text>
 <text x="0ch" y="12.5em"><tspan class="fc4">type </tspan><tspan class="fc5">boxSize </tspan><tspan class="fc4">struct </tspan><tspan class="fc1">{</tspan></text>
 <text x="0ch" y="13.5em"><tspan>        </tspan><tspan class="fc2">Width  </tspan><tspan class="fc5">int</tspan></text>
