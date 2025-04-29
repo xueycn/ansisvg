@@ -4,10 +4,10 @@ package ansitosvg
 import (
 	"io"
 
-	"github.com/wader/ansisvg/ansidecoder"
-	"github.com/wader/ansisvg/colorscheme/schemes"
-	"github.com/wader/ansisvg/svgscreen"
-	"github.com/wader/ansisvg/svgscreen/xydim"
+	"github.com/xueycn/ansisvg/ansidecoder"
+	"github.com/xueycn/ansisvg/colorscheme/schemes"
+	"github.com/xueycn/ansisvg/svgscreen"
+	"github.com/xueycn/ansisvg/svgscreen/xydim"
 )
 
 type Options struct {
