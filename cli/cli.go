@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/wader/ansisvg/ansitosvg"
-	"github.com/wader/ansisvg/colorscheme/schemes"
+	"github.com/xueycn/ansisvg/ansitosvg"
+	"github.com/xueycn/ansisvg/colorscheme/schemes"
 )
 
 type Env struct {
