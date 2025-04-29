@@ -1,3 +1,3 @@
-module github.com/wader/ansisvg
+module github.com/xuecn/ansisvg
 
 go 1.18
