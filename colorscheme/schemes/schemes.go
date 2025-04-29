@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/wader/ansisvg/colorscheme"
+	"github.com/xueycn/ansisvg/colorscheme"
 )
 
 //go:embed *.json
