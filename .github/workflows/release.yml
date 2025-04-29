@@ -1,26 +1,11 @@
 name: Release
-
 on:
   push:
     tags:
       - "v*"
   workflow_dispatch:
-
 permissions:
-  contents: write  # 确保有写入权限
-
-builds:
-  - goos:        # 指定操作系统
-      - linux
-      - darwin
-      - windows
-    goarch:      # 仅保留 amd64
-      - amd64
-    ignore:      # 忽略其他架构
-      - goos: linux
-        goarch: arm64
-      - goos: darwin
-        goarch: arm64
+  contents: write
 
 jobs:
   release:
@@ -32,4 +17,4 @@ jobs:
         with:
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用内置或自定义 Token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
