@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wader/ansisvg/cli"
-	"github.com/wader/ansisvg/internal/difftest"
+	"github.com/xueycn/ansisvg/cli"
+	"github.com/xueycn/ansisvg/internal/difftest"
 )
 
 var update = flag.Bool("update", false, "Update tests")
