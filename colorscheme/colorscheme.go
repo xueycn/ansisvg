@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/wader/ansisvg/color"
+	"github.com/xueycn/ansisvg/color"
 )
 
 type WorkbenchColorCustomizations struct {
