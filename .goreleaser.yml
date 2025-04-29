@@ -14,11 +14,17 @@ builds:
       - CGO_ENABLED=0
     goarch:
       - amd64
-      - arm64
     goos:
       - linux
       - windows
       - darwin
+    ignore:            # 显式忽略 arm64
+      - goos: linux
+        goarch: arm64
+      - goos: darwin
+        goarch: arm64
+      - goos: windows
+        goarch: arm64
     flags:
       - -trimpath
     ldflags:
