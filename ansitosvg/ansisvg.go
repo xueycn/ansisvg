@@ -65,19 +65,34 @@ func Convert(r io.Reader, w io.Writer, opts Options) error {
 			r = ' '
 			n = 8 - (ad.X % 8)
 		}
-
-		for i := 0; i < n; i++ {
-			line.Chars = append(line.Chars, svgscreen.Char{
-				Char:          string([]rune{r}),
-				X:             ad.X + i,
-				Foreground:    ad.Foreground.String(),
-				Background:    ad.Background.String(),
-				Underline:     ad.Underline,
-				Intensity:     ad.Intensity,
-				Invert:        ad.Invert,
-				Italic:        ad.Italic,
-				Strikethrough: ad.Strikethrough,
-			})
+    		// 如果是空格，只追加字符和位置，跳过样式属性
+		if r == ' ' {
+     			for i := 0; i < n; i++ {
+     				line.Chars = append(line.Chars, svgscreen.Char{
+					Char:          string([]rune{r}),
+					X:             ad.X + i,
+					Foreground:    ad.Foreground.String(),
+					Background:    ad.Background.String(),
+					Intensity:     ad.Intensity,
+					Invert:        ad.Invert,
+					Italic:        ad.Italic,
+					Strikethrough: ad.Strikethrough,
+				})
+			}
+		} else {
+			for i := 0; i < n; i++ {
+				line.Chars = append(line.Chars, svgscreen.Char{
+					Char:          string([]rune{r}),
+					X:             ad.X + i,
+					Foreground:    ad.Foreground.String(),
+					Background:    ad.Background.String(),
+					Underline:     ad.Underline,
+					Intensity:     ad.Intensity,
+					Invert:        ad.Invert,
+					Italic:        ad.Italic,
+					Strikethrough: ad.Strikethrough,
+				})
+			}
 		}
 	}
 	if len(line.Chars) > 0 {
