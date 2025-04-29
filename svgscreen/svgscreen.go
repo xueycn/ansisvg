@@ -5,7 +5,7 @@ import (
 	_ "embed"
 	"encoding/base64"
 	"fmt"
-	"github.com/wader/ansisvg/svgscreen/xydim"
+	"github.com/xueycn/ansisvg/svgscreen/xydim"
 	"html/template"
 	"io"
 	"strconv"
