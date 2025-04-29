@@ -4,9 +4,10 @@ on:
   push:
     tags:
       - "v*"
-  workflow_dispatch:  # 添加这一行以支持手动触发
+  workflow_dispatch:
+
 permissions:
-  contents: write
+  contents: write  # 确保有写入权限
 
 jobs:
   release:
@@ -16,8 +17,6 @@ jobs:
       - uses: actions/setup-go@v4
       - uses: goreleaser/goreleaser-action@v5
         with:
-          distribution: goreleaser
-          version: latest
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用内置或自定义 Token
