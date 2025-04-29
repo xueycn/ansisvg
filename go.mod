@@ -1,3 +1,3 @@
-module github.com/xuecn/ansisvg
+module github.com/xueycn/ansisvg
 
 go 1.18
