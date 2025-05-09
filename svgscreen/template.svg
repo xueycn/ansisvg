@@ -20,10 +20,22 @@ whitespace only tspan:s preventing underline to be properly rendered.
             src: url({{$.Dom.FontRef}});
         }
         {{- end}}
+        {{- if gt (len $.Dom.FontEmbedded) 0}}
+        * {
+            font-family: {{if $.Dom.FontName}}{{$.Dom.FontName}}, {{end}}SimHei, Consolas, monospace;
+            font-size: {{$.Dom.FontSize}}px;
+        }
+        {{- else if ne $.Dom.FontRef ""}}
+        * {
+            font-family: {{if $.Dom.FontName}}{{$.Dom.FontName}}, {{end}}SimHei, Consolas, monospace;
+            font-size: {{$.Dom.FontSize}}px;
+        }
+        {{- else}}
         * {
             font-family: {{if $.Dom.FontName}}{{$.Dom.FontName}}, {{end}}monospace;
             font-size: {{$.Dom.FontSize}}px;
         }
+        {{- end}}
         tspan, text {
             font-variant-ligatures: none;
             dominant-baseline: central;
