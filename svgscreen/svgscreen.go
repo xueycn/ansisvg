@@ -5,11 +5,12 @@ import (
 	_ "embed"
 	"encoding/base64"
 	"fmt"
-	"github.com/xueycn/ansisvg/svgscreen/xydim"
 	"html/template"
 	"io"
 	"strconv"
 	"strings"
+
+	"github.com/xueycn/ansisvg/svgscreen/xydim"
 	"golang.org/x/text/width"
 )
 
@@ -198,7 +199,8 @@ func (s *Screen) lineToTextElement(l Line) textElement {
 			continue
 		}
 		// Do not consolidate if class is changing, but ignore whitespace
-		if newSpan.Class != currentSpan.Class && strings.TrimSpace(newSpan.Content) != "" {
+		// if newSpan.Class != currentSpan.Class && strings.TrimSpace(newSpan.Content) != "" {
+		if newSpan.Class != currentSpan.Class {
 			appendSpan()
 			currentSpan = newSpan
 			continue
