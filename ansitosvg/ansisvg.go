@@ -24,7 +24,7 @@ type Options struct {
 }
 
 var DefaultOptions = Options{
-	FontName:    "SimHei, Consolas",
+	FontName:    "SimHei, Consolas, DejaVu Sans Mono, SF Mono",
 	FontSize:    14,
 	CharBoxSize: xydim.XyDimInt{X: 0, Y: 0},
 	MarginSize:  xydim.XyDimFloat{X: 0, Y: 0},
