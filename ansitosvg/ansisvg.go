@@ -82,7 +82,8 @@ func Convert(r io.Reader, w io.Writer, opts Options) error {
 	if len(line.Chars) > 0 {
 		lines = append(lines, line)
 	}
-	terminalWidth := ad.MaxX + 1
+	// terminalWidth := ad.MaxX + 1
+	terminalWidth := ad.MaxX + 3
 	if opts.TerminalWidth != 0 {
 		terminalWidth = opts.TerminalWidth
 	}
