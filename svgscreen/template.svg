@@ -18,6 +18,7 @@ whitespace only tspan:s preventing underline to be properly rendered.
         @font-face {
             font-family: {{$.Dom.FontName}};
             src: url({{$.Dom.FontRef}});
+            font-display: swap;
         }
         {{- end}}
         {{- if gt (len $.Dom.FontEmbedded) 0}}
